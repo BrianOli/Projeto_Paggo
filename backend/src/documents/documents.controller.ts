@@ -1,7 +1,8 @@
 import { 
   Controller, 
-  Post, 
   Get, 
+  Post, 
+  Delete,
   Param, 
   Req, 
   Res, 
@@ -58,5 +59,15 @@ export class DocumentsController {
     res.download(filePath, `${document.filename}-with-text.txt`, () => {
       fs.unlinkSync(filePath);
     });
+  }
+
+  @Delete(':id')
+  @UseGuards(AuthGuard)
+  async deleteDocument(@Param('id') docId: number) {
+    try {
+      return await this.documentsService.deleteDocument(docId);
+    } catch (error) {
+      throw error;
+    }
   }
 }

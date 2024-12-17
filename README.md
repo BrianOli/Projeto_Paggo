@@ -1,7 +1,8 @@
 
+
 # Projeto Paggo
 
-Este é o projeto **Paggo**, uma aplicação que permite o upload de documentos para análise utilizando IA. A aplicação é composta por um frontend em **React** e um backend em **Node.js** com **Express**.
+Este repositório foi desenvolvido para concluir a etapa de Case Técnico do Processo Seletivo **Paggo**, que tem como objetivo desenvolver um sistema web que permite aos usuários fazer upload de documentos, extrair texto via OCR e interagir com o conteúdo extraído por meio de um modelo de linguagem. O sistema possui backend em **NestJS** e **Prisma**, frontend em **ReactJS**, e utiliza **PostgreSQL** para armazenar os dados. Ele inclui funcionalidades como visualização, download de documentos e autenticação de usuários.
 
 ## Índice
 
@@ -93,12 +94,14 @@ O servidor será executado em `http://localhost:3000`
 	backend/
 	│
 	├── src/
-	│   ├── controllers/           # Controladores para lógica de rotas
-	│   ├── models/                # Modelos de banco de dados (ex: usuário, documento)
-	│   ├── routes/                # Definição das rotas da API
-	│   ├── services/              # Serviços auxiliares (ex: autenticação, upload)
-	│   └── app.js                 # Configuração do Express e middlewares
+	│   ├── auth/           	   # Lógica de autenticação, Login e Cadastro de usuário)
+	│   ├── documents/             # Manipulação das rotas de documentos
+	│   ├── llm/                   # Responsável pela Resposta da IA
+	│   ├── ocr/                   # Extrai texto do documento recebido
+	│   ├── prisma/                # Inicializa o ORM Prisma
+	│   └── utils/                 # Salva os arquivos enviados ao sistema
 	│
+	├── .main.ts                   # Configurações iniciais do sistema
 	├── .env                       # Variáveis de ambiente (ex: configuração do banco de dados)
 	├── package.json               # Dependências e scripts do backend
 	└── yarn.lock                  # Dependências exatas do backend
@@ -107,10 +110,11 @@ O servidor será executado em `http://localhost:3000`
 	frontend/
 	│
 	├── src/
-	│   ├── components/            # Componentes React reutilizáveis (ex: Navbar, Modal)
-	│   ├── pages/                 # Páginas principais da aplicação (ex: Home, Login)
-	│   ├── services/              # Serviços para interagir com a API (ex: api.js)
-	│   └── App.tsx                # Componente principal da aplicação
+	│   ├── config/                # Configurações para inicialização do Axios
+	│   ├── pages/                 # Páginas principais da aplicação
+	│   │   └──styles/		       # Estilização da aplicação
+	│   ├── App.tsx                # Rotas/Páginas presentes na aplicação
+	│   └── index.tsx              # Componente principal da aplicação
 	│
 	├── .env                       # URL base da API do backend
 	├── package.json               # Dependências e scripts do frontend

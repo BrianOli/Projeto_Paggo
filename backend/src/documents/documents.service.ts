@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -77,5 +77,21 @@ export class DocumentsService {
     return this.prismaService.document.findUnique({
       where: { id: Number(docId) },
     });
+  }
+
+  async deleteDocument(docId: number) {
+    const document = await this.prismaService.document.findUnique({
+      where: { id: Number(docId) },
+    });
+
+    if (!document) {
+      throw new NotFoundException('Documento não encontrado');
+    }
+
+    await this.prismaService.document.delete({
+      where: { id: Number(docId) },
+    });
+
+    return { message: 'Documento deletado com sucesso!' };
   }
 }
