@@ -119,7 +119,3 @@ O servidor será executado em `http://localhost:3000`
 	├── .env                       # URL base da API do backend
 	├── package.json               # Dependências e scripts do frontend
 	└── yarn.lock                  # Dependências exatas do frontend
-
----
-
-Esse `README` fornece uma visão geral de como rodar e testar a aplicação tanto no backend quanto no frontend, além de como configurar o banco de dados PostgreSQL e rodar as migrações. Certifique-se de personalizar o arquivo conforme a necessidade do seu projeto, incluindo quaisquer passos adicionais que possam ser específicos para o seu ambiente de desenvolvimento.
